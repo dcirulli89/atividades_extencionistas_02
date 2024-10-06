@@ -7,34 +7,89 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
+            display: flex;
+            background-color: #f0f8ff;
         }
 
-        .container {
+        /* Estilo do menu lateral */
+        .sidebar {
+            width: 200px;
+            background-color: #2196f3;
+            padding: 20px;
+            color: white;
+            height: 100vh;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            font-size: 1.5em;
+            margin-top: 0;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #1e88e5;
+        }
+
+        /* Estilo do conteúdo principal */
+        .content {
+            margin-left: 220px; /* Espaço para o menu lateral */
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        header {
             text-align: center;
             padding: 20px;
+            background-color: #2196f3;
+            color: white;
         }
 
-        h1 {
-            font-size: 3em;
-            color: #2e8b57;
-        }
-
-        p {
-            font-size: 1.5em;
-            color: #555;
+        footer {
+            background-color: #2196f3;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Uso Racional de Água</h1>
-        <p>Pequenas atitudes fazem a diferença na preservação desse recurso essencial.</p>
+
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <a href="dicas.html">Dicas</a>
+        <a href="impactos.html">Impactos</a>
+        <a href="solucoes.html">Soluções</a>
+        <a href="estatisticas.html">Estatísticas</a>
+        <a href="contato.html">Contato</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="sobre.html">Sobre</a>
     </div>
+
+    <div class="content">
+        <header>
+            <h1>Bem-vindo ao site sobre Uso Racional de Água</h1>
+        </header>
+
+        <p>Descubra dicas e informações para economizar água e preservar este recurso precioso.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Uso Racional de Água. Todos os direitos reservados.</p>
+    </footer>
+
 </body>
 </html>
