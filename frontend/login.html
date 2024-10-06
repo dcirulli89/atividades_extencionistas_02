@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Uso Racional de Água</title>
+    <title>Login e Registro - Uso Racional de Água</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,7 +15,7 @@
             margin: 0;
         }
 
-        .login-container {
+        .container {
             background-color: white;
             padding: 20px;
             border-radius: 10px;
@@ -59,13 +59,20 @@
             text-align: center;
             margin-top: 10px;
         }
+
+        .toggle-form {
+            text-align: center;
+            margin-top: 15px;
+            cursor: pointer;
+            color: #2196f3;
+        }
     </style>
 </head>
 <body>
 
-    <div class="login-container">
-        <h2>Login</h2>
-        <form id="loginForm">
+    <div class="container" id="auth-container">
+        <h2 id="form-title">Login</h2>
+        <form id="authForm">
             <label for="username">Usuário:</label>
             <input type="text" id="username" name="username" required>
 
@@ -75,14 +82,32 @@
             <button type="submit">Entrar</button>
         </form>
         <div class="message" id="message"></div>
+        <div class="toggle-form" id="toggleForm">Não tem uma conta? Registre-se</div>
+    </div>
+
+    <div class="container" id="register-container" style="display: none;">
+        <h2>Registro</h2>
+        <form id="registerForm">
+            <label for="newUsername">Usuário:</label>
+            <input type="text" id="newUsername" name="newUsername" required>
+
+            <label for="newPassword">Senha:</label>
+            <input type="password" id="newPassword" name="newPassword" required>
+
+            <label for="confirmPassword">Confirme a Senha:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <button type="submit">Registrar</button>
+        </form>
+        <div class="message" id="registerMessage"></div>
+        <div class="toggle-form" id="toggleToLogin">Já tem uma conta? Faça Login</div>
     </div>
 
     <script>
-        // Evento de submit do formulário
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
+        // Evento de submit do formulário de login
+        document.getElementById('authForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Impede o envio do formulário
 
-            // Obtém os valores dos campos
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
@@ -95,6 +120,36 @@
                 document.getElementById('message').innerText = 'Usuário ou senha incorretos.';
                 document.getElementById('message').style.color = 'red';
             }
+        });
+
+        // Evento de submit do formulário de registro
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio do formulário
+
+            const newUsername = document.getElementById('newUsername').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Validação simples
+            if (newPassword === confirmPassword) {
+                document.getElementById('registerMessage').innerText = 'Registro bem-sucedido!';
+                document.getElementById('registerMessage').style.color = 'green';
+                // Aqui você pode armazenar o usuário e a senha em um banco de dados ou localStorage
+            } else {
+                document.getElementById('registerMessage').innerText = 'As senhas não coincidem.';
+                document.getElementById('registerMessage').style.color = 'red';
+            }
+        });
+
+        // Alternar entre as formulários de login e registro
+        document.getElementById('toggleForm').addEventListener('click', function() {
+            document.getElementById('auth-container').style.display = 'none';
+            document.getElementById('register-container').style.display = 'block';
+        });
+
+        document.getElementById('toggleToLogin').addEventListener('click', function() {
+            document.getElementById('register-container').style.display = 'none';
+            document.getElementById('auth-container').style.display = 'block';
         });
     </script>
 
