@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Uso Racional de Água</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2196f3;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .toggle-form {
+            text-align: center;
+            margin-top: 15px;
+            cursor: pointer;
+            color: #2196f3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Registro</h2>
+        <form id="registerForm">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="cep">CEP:</label>
+            <input type="text" id="cep" name="cep" required>
+
+            <button type="submit">Registrar</button>
+        </form>
+        <div class="message" id="registerMessage"></div>
+        <div class="toggle-form" id="toggleToLogin">Já tem uma conta? Faça Login</div>
+    </div>
+
+    <script>
+        // Evento de submit do formulário de registro
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio do formulário
+
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const cep = document.getElementById('cep').value;
+
+            // Armazenar os dados no localStorage
+            const userData = {
+                email: email,
+                username: username,
+                password: password,
+                cep: cep
+            };
+
+            // Simular armazenamento (pode ser melhorado com verificação de existência)
+            localStorage.setItem(username, JSON.stringify(userData));
+
+            // Mensagem de sucesso
+            document.getElementById('registerMessage').innerText = 'Registro bem-sucedido!';
+            document.getElementById('registerMessage').style.color = 'green';
+        });
+
+        // Alternar para a página de login
+        document.getElementById('toggleToLogin').addEventListener('click', function() {
+            window.location.href = 'login.html'; // Redireciona para a página de login
+        });
+    </script>
+
+</body>
+</html>
