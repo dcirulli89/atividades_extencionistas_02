@@ -10,6 +10,43 @@
             background-color: #f0f4f8;
             margin: 0;
             padding: 0;
+            display: flex;
+        }
+
+        /* Estilo do menu lateral */
+        .sidebar {
+            width: 200px;
+            background-color: #0073e6;
+            padding: 20px;
+            color: white;
+            height: 100vh;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            font-size: 1.5em;
+            margin-top: 0;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #005bb5;
+        }
+
+        /* Estilo do conteúdo principal */
+        .content {
+            margin-left: 220px; /* Espaço para o menu lateral */
+            padding: 20px;
+            flex-grow: 1;
         }
 
         header {
@@ -61,37 +98,49 @@
     </style>
 </head>
 <body>
+    <!-- Menu será carregado dinamicamente -->
+    <div id="menu-container"></div>
 
-    <header>
-        <h1>Estatísticas sobre Consumo de Água</h1>
-    </header>
+    <div class="content">
+        <header>
+            <h1>Estatísticas sobre Consumo de Água</h1>
+        </header>
 
-    <div class="container">
-        <h2>Consumo de Água no Mundo</h2>
-        <p>O consumo de água varia significativamente entre diferentes países e regiões. A distribuição desigual de água potável e o aumento da demanda têm levado a um uso mais intensivo dos recursos hídricos. A seguir, são apresentados alguns dados importantes sobre o consumo global de água:</p>
+        <div class="container">
+            <h2>Consumo de Água no Mundo</h2>
+            <p>O consumo de água varia significativamente entre diferentes países e regiões. A distribuição desigual de água potável e o aumento da demanda têm levado a um uso mais intensivo dos recursos hídricos. A seguir, são apresentados alguns dados importantes sobre o consumo global de água:</p>
 
-        <div class="chart">
-            <h3>Consumo de Água por Setor</h3>
-            <img src="https://via.placeholder.com/700x400" alt="Gráfico de consumo de água por setor">
-            <p><em>Distribuição do consumo de água nos setores agrícola, industrial e doméstico.</em></p>
+            <div class="chart">
+                <h3>Consumo de Água por Setor</h3>
+                <img src="https://via.placeholder.com/700x400" alt="Gráfico de consumo de água por setor">
+                <p><em>Distribuição do consumo de água nos setores agrícola, industrial e doméstico.</em></p>
+            </div>
+
+            <h2>Consumo de Água no Brasil</h2>
+            <p>No Brasil, a maior parte do consumo de água é destinada à agricultura. A escassez de água afeta principalmente as regiões semiáridas do país, que sofrem com a falta de chuva e o uso inadequado dos recursos hídricos.</p>
+
+            <div class="chart">
+                <h3>Consumo de Água per Capita</h3>
+                <img src="https://via.placeholder.com/700x400" alt="Gráfico de consumo de água per capita">
+                <p><em>Consumo de água per capita no Brasil comparado a outros países.</em></p>
+            </div>
+
+            <h2>Projeções Futuras</h2>
+            <p>Com o aumento da população e a intensificação das atividades agrícolas e industriais, o consumo de água deverá crescer consideravelmente nas próximas décadas. As soluções sustentáveis serão fundamentais para garantir a disponibilidade desse recurso essencial.</p>
         </div>
-
-        <h2>Consumo de Água no Brasil</h2>
-        <p>No Brasil, a maior parte do consumo de água é destinada à agricultura. A escassez de água afeta principalmente as regiões semiáridas do país, que sofrem com a falta de chuva e o uso inadequado dos recursos hídricos.</p>
-
-        <div class="chart">
-            <h3>Consumo de Água per Capita</h3>
-            <img src="https://via.placeholder.com/700x400" alt="Gráfico de consumo de água per capita">
-            <p><em>Consumo de água per capita no Brasil comparado a outros países.</em></p>
-        </div>
-
-        <h2>Projeções Futuras</h2>
-        <p>Com o aumento da população e a intensificação das atividades agrícolas e industriais, o consumo de água deverá crescer consideravelmente nas próximas décadas. As soluções sustentáveis serão fundamentais para garantir a disponibilidade desse recurso essencial.</p>
     </div>
 
     <footer>
         <p>&copy; 2024 Uso Racional de Água. Todos os direitos reservados.</p>
     </footer>
 
+    <script>
+        // Carrega o menu lateral
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('menu-container').innerHTML = data;
+            });
+    </script>
 </body>
 </html>
