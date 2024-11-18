@@ -125,6 +125,12 @@
     <footer>
         <p>&copy; 2024 Uso Racional de Água. Todos os direitos reservados.</p>
     </footer>
-
+    <script>
+        // Carrega o menu lateral
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('menu-container').innerHTML = data;
+            });
 </body>
 </html>
