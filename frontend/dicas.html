@@ -60,7 +60,7 @@
 <body>
 
     <header>
-        <h1>Dica do dia de Economia de Água</h1>
+        <h1>Dica de Economia de Água</h1>
     </header>
 
     <div class="container">
@@ -75,89 +75,30 @@
     </footer>
 
     <script>
-        // Array de dicas, uma para cada dia do ano (exemplo com algumas dicas)
-       const dicas = [
-    "Feche a torneira enquanto escova os dentes: economize até 20 litros por dia.",
-    "Tome banhos curtos: cada minuto a menos pode economizar 10 litros de água.",
-    "Reutilize a água da lavagem de roupas para limpar pisos.",
-    "Regue as plantas no início da manhã ou no final da tarde para reduzir a evaporação.",
-    "Conserte torneiras que pingam: uma torneira pingando pode desperdiçar até 46 litros por dia.",
-    "Colete água da chuva para lavar carros ou regar plantas.",
-    "Use baldes em vez de mangueiras para lavar o quintal ou carro.",
-    "Lave roupas com carga cheia na máquina de lavar.",
-    "Ajuste a descarga do vaso sanitário para usar menos água por acionamento.",
-    "Instale redutores de vazão nas torneiras para reduzir o consumo.",
-    "Evite lavar calçadas com água: use uma vassoura.",
-    "Limpe os alimentos em uma bacia em vez de usar água corrente.",
-    "Use a água da lavagem de vegetais para regar plantas.",
-    "Substitua o chuveiro por um modelo de baixa vazão.",
-    "Verifique a piscina regularmente para evitar vazamentos.",
-    "Cubra piscinas quando não estiverem em uso para reduzir a evaporação.",
-    "Reutilize a água de aparelhos de ar-condicionado para limpar pisos.",
-    "Use regadores em vez de mangueiras para molhar as plantas.",
-    "Escolha plantas nativas ou resistentes à seca para seu jardim.",
-    "Lave carros em lava-rápidos que utilizam água reciclada.",
-    "Evite descongelar alimentos sob água corrente: descongele na geladeira.",
-    "Inspecione periodicamente a rede hidráulica de sua casa para detectar vazamentos.",
-    "Instale torneiras automáticas para evitar desperdício.",
-    "Mantenha um balde no banheiro para coletar água enquanto o chuveiro aquece.",
-    "Evite o uso de máquinas de lavar louças sem carga cheia.",
-    "Instale descargas de duplo acionamento para reduzir o consumo de água no banheiro.",
-    "Ensaboe toda a louça antes de enxaguar para reduzir o tempo de torneira aberta.",
-    "Substitua mangueiras antigas por modelos com controle de vazão.",
-    "Adote hábitos de reuso de água na limpeza doméstica.",
-    "Utilize sensores de irrigação para evitar regas desnecessárias.",
-    "Armazene água fria que sai do chuveiro antes de aquecer para outras utilidades.",
-    "Envolva a família em campanhas de economia de água.",
-    "Feche bem as torneiras após o uso.",
-    "Priorize a compra de eletrodomésticos eficientes no consumo de água.",
-    "Utilize sistemas de irrigação por gotejamento em jardins.",
-    "Lave o carro apenas quando necessário.",
-    "Use a máquina de lavar louça apenas em modo econômico.",
-    "Crie um cronograma de rega eficiente para o jardim.",
-    "Monitore sua conta de água para detectar aumentos incomuns no consumo.",
-    "Instale um sistema de captação de água da chuva.",
-    "Evite brinquedos que utilizem grandes volumes de água.",
-    "Reduza o uso de torneiras em tarefas diárias.",
-    "Use água da chuva para lavar tapetes e panos.",
-    "Lave frutas e verduras juntas em uma bacia.",
-    "Corte o uso de mangueiras em atividades cotidianas.",
-    "Prefira sistemas de limpeza a vapor para pisos e tapetes.",
-    "Revise os sistemas de encanamento regularmente para evitar infiltrações.",
-    "Instale medidores individuais de água em prédios residenciais.",
-    "Eduque as crianças sobre a importância de economizar água.",
-    "Aproveite ao máximo o ciclo completo da máquina de lavar roupas.",
-    "Elimine vazamentos em caixas d'água.",
-    "Mantenha o nível adequado de água na piscina para evitar transbordamento.",
-    "Evite lavar roupas em pequenos lotes.",
-    "Desligue a mangueira enquanto esfrega o carro.",
-    "Prefira lavar o carro com panos úmidos em vez de água corrente.",
-    "Use adubos que retenham mais água no solo para o jardim.",
-    "Plante árvores para ajudar a manter o solo úmido e diminuir a necessidade de irrigação.",
-    "Substitua pisos impermeáveis por materiais permeáveis no quintal.",
-    "Incentive vizinhos a adotar práticas de economia de água.",
-    "Realize campanhas em escolas sobre o uso racional da água.",
-    "Evite regar plantas em dias chuvosos.",
-    "Use temporizadores para limitar o tempo no chuveiro.",
-    "Aproveite a água de cozimento de alimentos para regar plantas após esfriar.",
-    "Instale filtros nas torneiras para evitar entupimentos e vazamentos.",
-    "Prefira utilizar vassouras em varandas e quintais no lugar de mangueiras."
-    // Adicione as demais dicas aqui até completar as 366.
-];
+        // Array de dicas
+        const dicas = [
+            "Feche a torneira enquanto escova os dentes: economize até 20 litros por dia.",
+            "Tome banhos curtos: cada minuto a menos pode economizar 10 litros de água.",
+            "Reutilize a água da lavagem de roupas para limpar pisos.",
+            "Regue as plantas no início da manhã ou no final da tarde para reduzir a evaporação.",
+            "Conserte torneiras que pingam: uma torneira pingando pode desperdiçar até 46 litros por dia.",
+            "Colete água da chuva para lavar carros ou regar plantas.",
+            "Use baldes em vez de mangueiras para lavar o quintal ou carro.",
+            "Lave roupas com carga cheia na máquina de lavar.",
+            "Ajuste a descarga do vaso sanitário para usar menos água por acionamento.",
+            "Instale redutores de vazão nas torneiras para reduzir o consumo."
+            // Adicione mais dicas conforme necessário
+        ];
 
-
-        // Função para calcular o dia do ano
-        function getDiaDoAno() {
-            const hoje = new Date();
-            const inicioAno = new Date(hoje.getFullYear(), 0, 0);
-            const diff = hoje - inicioAno + ((inicioAno.getTimezoneOffset() - hoje.getTimezoneOffset()) * 60 * 1000);
-            return Math.floor(diff / (1000 * 60 * 60 * 24));
+        // Função para escolher uma dica aleatória
+        function escolherDicaAleatoria() {
+            const indiceAleatorio = Math.floor(Math.random() * dicas.length);
+            return dicas[indiceAleatorio];
         }
 
-        // Mostra a dica do dia
-        const diaDoAno = getDiaDoAno();
-        const dicaDoDia = dicas[diaDoAno % dicas.length]; // Cicla as dicas se o array for menor que o número de dias no ano
-        document.getElementById("dica").textContent = dicaDoDia;
+        // Exibe uma dica aleatória na página
+        const dicaAleatoria = escolherDicaAleatoria();
+        document.getElementById("dica").textContent = dicaAleatoria;
     </script>
 
 </body>
