@@ -44,6 +44,13 @@
         button:hover {
             background-color: #45a049;
         }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -54,32 +61,153 @@
 
     <div id="quiz"></div>
     <button id="submit">Enviar Respostas</button>
+    <div id="result" class="result"></div>
 
     <script>
-        // Array de perguntas
-        const questions = Array.from({ length: 1000 }, (_, i) => ({
-            question: `Pergunta ${i + 1}`,
-            options: [
-                `Alternativa A para Pergunta ${i + 1}`,
-                `Alternativa B para Pergunta ${i + 1}`,
-                `Alternativa C para Pergunta ${i + 1}`
-            ],
-            answer: `Alternativa A para Pergunta ${i + 1}`, // Defina a resposta correta aqui
-        }));
-
-        // Seleciona 10 perguntas aleatoriamente
-        const selectedQuestions = [];
-        while (selectedQuestions.length < 10) {
-            const randomIndex = Math.floor(Math.random() * questions.length);
-            if (!selectedQuestions.includes(questions[randomIndex])) {
-                selectedQuestions.push(questions[randomIndex]);
-            }
-        }
+        // Array de perguntas sobre água
+        const questions = [
+            {
+                question: "Qual é o maior consumidor de água no Brasil?",
+                options: [
+                    "Agronegócio",
+                    "Indústria",
+                    "Doméstico"
+                ],
+                answer: "Agronegócio"
+            },
+            {
+                question: "Quanto de água é necessário para produzir 1 kg de carne bovina?",
+                options: [
+                    "15.000 litros",
+                    "50.000 litros",
+                    "100.000 litros"
+                ],
+                answer: "15.000 litros"
+            },
+            {
+                question: "Qual é a principal fonte de água potável no Brasil?",
+                options: [
+                    "Águas subterrâneas",
+                    "Rios e lagos",
+                    "Águas de chuva"
+                ],
+                answer: "Rios e lagos"
+            },
+            {
+                question: "Como a utilização de torneiras com arejadores pode ajudar na economia de água?",
+                options: [
+                    "Reduzindo o fluxo de água",
+                    "Aumentando o fluxo de água",
+                    "Desviando a água para outra área"
+                ],
+                answer: "Reduzindo o fluxo de água"
+            },
+            {
+                question: "Qual é o impacto do desperdício de água no meio ambiente?",
+                options: [
+                    "Aumento da biodiversidade",
+                    "Desertificação e escassez de recursos",
+                    "Melhora na qualidade do ar"
+                ],
+                answer: "Desertificação e escassez de recursos"
+            },
+            {
+                question: "A água que consumimos na nossa casa é proveniente principalmente de?",
+                options: [
+                    "Águas de chuva",
+                    "Estacionamentos de águas pluviais",
+                    "Fontes naturais ou estações de tratamento"
+                ],
+                answer: "Fontes naturais ou estações de tratamento"
+            },
+            {
+                question: "Qual dessas ações pode ajudar a economizar água no dia a dia?",
+                options: [
+                    "Deixar a torneira aberta enquanto escova os dentes",
+                    "Tomar banhos mais curtos",
+                    "Lavar carros com mangueira"
+                ],
+                answer: "Tomar banhos mais curtos"
+            },
+            {
+                question: "Quanto tempo em média uma torneira aberta pode desperdiçar de água por minuto?",
+                options: [
+                    "5 litros",
+                    "10 litros",
+                    "20 litros"
+                ],
+                answer: "10 litros"
+            },
+            {
+                question: "Qual é a porcentagem de água doce disponível no planeta?",
+                options: [
+                    "0,3%",
+                    "3%",
+                    "30%"
+                ],
+                answer: "0,3%"
+            },
+            {
+                question: "Qual desses processos pode ser utilizado para reuso de água?",
+                options: [
+                    "Desalinação",
+                    "Filtragem",
+                    "Reaproveitamento de águas pluviais"
+                ],
+                answer: "Reaproveitamento de águas pluviais"
+            },
+            {
+                question: "Qual é o principal problema enfrentado pela água no Brasil?",
+                options: [
+                    "Saneamento básico",
+                    "Poluição e desperdício",
+                    "Falta de estações de tratamento"
+                ],
+                answer: "Poluição e desperdício"
+            },
+            {
+                question: "O que é a 'pegada hídrica'?",
+                options: [
+                    "O total de água utilizada na produção de um produto",
+                    "A quantidade de água consumida em casa",
+                    "O volume de água consumido por um rio"
+                ],
+                answer: "O total de água utilizada na produção de um produto"
+            },
+            {
+                question: "Em média, quanto tempo leva para a água de um rio ser filtrada e limpa em uma estação de tratamento?",
+                options: [
+                    "Alguns dias",
+                    "Algumas semanas",
+                    "Alguns meses"
+                ],
+                answer: "Alguns dias"
+            },
+            {
+                question: "Quais tipos de produtos consomem grandes quantidades de água em sua produção?",
+                options: [
+                    "Tecnologia e cosméticos",
+                    "Roupas e alimentos",
+                    "Alimentos e eletrônicos"
+                ],
+                answer: "Roupas e alimentos"
+            },
+            {
+                question: "Qual é a água utilizada para consumo humano?",
+                options: [
+                    "Água potável",
+                    "Água de reuso",
+                    "Água de irrigação"
+                ],
+                answer: "Água potável"
+            },
+            // Continue com mais perguntas de acordo com sua necessidade...
+        ];
 
         // Função para gerar o quiz
         function generateQuiz() {
             const quizContainer = document.getElementById('quiz');
-            selectedQuestions.forEach((q, index) => {
+            questions.forEach((q, index) => {
                 const questionElement = document.createElement('div');
                 questionElement.classList.add('question');
                 questionElement.innerHTML = `<h3>${q.question}</h3>`;
@@ -98,16 +226,16 @@
             });
         }
 
-        // Função para enviar respostas
+        // Função para enviar respostas e calcular a pontuação
         document.getElementById('submit').addEventListener('click', () => {
             let score = 0;
-            selectedQuestions.forEach((q, index) => {
+            questions.forEach((q, index) => {
                 const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
                 if (selectedOption && selectedOption.value === q.answer) {
                     score++;
                 }
             });
-            alert(`Você acertou ${score} de ${selectedQuestions.length} perguntas!`);
+            document.getElementById('result').innerHTML = `Você acertou ${score} de ${questions.length} perguntas!`;
         });
 
         // Gera o quiz ao carregar a página
