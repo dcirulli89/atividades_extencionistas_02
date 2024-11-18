@@ -90,15 +90,6 @@
 </head>
 <body>
 
-    <!-- Menu lateral -->
-    <nav>
-        <a href="index.html">Início</a>
-        <a href="sobre.html">Sobre o Projeto</a>
-        <a href="tecnologias.html">Tecnologias Sustentáveis</a>
-        <a href="praticas.html">Práticas no Dia a Dia</a>
-        <a href="contato.html">Contato</a>
-    </nav>
-
     <!-- Conteúdo -->
     <div class="content">
         <header>
@@ -126,6 +117,12 @@
     <footer>
         <p>&copy; 2024 Uso Racional de Água. Todos os direitos reservados.</p>
     </footer>
-
+    <script>
+        // Carrega o menu lateral
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('menu-container').innerHTML = data;
+            });
 </body>
 </html>
