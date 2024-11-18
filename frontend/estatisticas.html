@@ -16,11 +16,13 @@
         /* Estilo do menu lateral */
         .sidebar {
             width: 200px;
-            background-color: #0073e6;
+            background-color: #2e8b57;
             padding: 20px;
             color: white;
             height: 100vh;
             position: fixed;
+            top: 0;
+            left: 0;
         }
 
         .sidebar h2 {
@@ -39,7 +41,7 @@
         }
 
         .sidebar a:hover {
-            background-color: #005bb5;
+            background-color: #276644;
         }
 
         /* Estilo do conteúdo principal */
@@ -98,8 +100,15 @@
     </style>
 </head>
 <body>
-    <!-- Menu será carregado dinamicamente -->
-    <div id="menu-container"></div>
+
+    <!-- Menu lateral -->
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <a href="#">Página Inicial</a>
+        <a href="#">Dicas de Economia de Água</a>
+        <a href="#">Estatísticas de Consumo</a>
+        <a href="#">Contato</a>
+    </div>
 
     <div class="content">
         <header>
@@ -112,7 +121,7 @@
 
             <div class="chart">
                 <h3>Consumo de Água por Setor</h3>
-                <img src="https://via.placeholder.com/700x400" alt="Gráfico de consumo de água por setor">
+                <img src="https://via.placeholder.com/700x400?text=Gráfico+de+Consumo+de+Água+por+Setor" alt="Gráfico de consumo de água por setor">
                 <p><em>Distribuição do consumo de água nos setores agrícola, industrial e doméstico.</em></p>
             </div>
 
@@ -121,7 +130,7 @@
 
             <div class="chart">
                 <h3>Consumo de Água per Capita</h3>
-                <img src="https://via.placeholder.com/700x400" alt="Gráfico de consumo de água per capita">
+                <img src="https://via.placeholder.com/700x400?text=Gráfico+de+Consumo+de+Água+per+Capita" alt="Gráfico de consumo de água per capita">
                 <p><em>Consumo de água per capita no Brasil comparado a outros países.</em></p>
             </div>
 
@@ -134,13 +143,5 @@
         <p>&copy; 2024 Uso Racional de Água. Todos os direitos reservados.</p>
     </footer>
 
-    <script>
-        // Carrega o menu lateral
-        fetch('menu.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('menu-container').innerHTML = data;
-            });
-    </script>
 </body>
 </html>
