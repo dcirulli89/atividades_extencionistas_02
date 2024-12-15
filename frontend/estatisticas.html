@@ -1,129 +1,252 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uso Racional da Água - Estatísticas</title>
+    <title>Estatísticas do Uso Racional da Água</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
-
         .container {
-            max-width: 800px;
+            width: 80%;
             margin: auto;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        h1 {
+        h2 {
             text-align: center;
             margin-bottom: 20px;
         }
-
-        canvas {
-            max-width: 100%;
+        .chart-container {
+            margin-bottom: 40px;
+        }
+        .chart-title {
+            text-align: center;
+            margin-bottom: 10px;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
 <div class="container">
-    <h1>Estatísticas do Uso Racional da Água</h1>
-    
-    <!-- Gráfico de Pizza - Tempo de Banho -->
-    <canvas id="graficoTempoBanho" width="400" height="400"></canvas>
-    <canvas id="graficoUsoTorneira" width="400" height="400"></canvas>
-    <canvas id="graficoUsoMangueira" width="400" height="400"></canvas>
-    <canvas id="graficoVerificacao" width="400" height="400"></canvas>
+    <h2>Estatísticas do Uso Racional da Água</h2>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        // Gráfico de Pizza - Tempo de Banho
-        var ctx1 = document.getElementById('graficoTempoBanho').getContext('2d');
-        var graficoTempoBanho = new Chart(ctx1, {
-            type: 'pie',
-            data: {
-                labels: ['< 5 min', '5 a 10 min', '10 a 15 min', '> 15 min'],
-                datasets: [{
-                    data: [10, 30, 40, 20],
-                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#FF9F40']
-                }]
-            },
-            options: {
-                responsive: true,
-                title: {
-                    display: true,
-                    text: 'Tempo de Banho (em porcentagem)'
-                }
-            }
-        });
+    <!-- Pergunta 1 -->
+    <div class="chart-container">
+        <h3 class="chart-title">1. Quanto tempo você costuma tomar banho?</h3>
+        <canvas id="chart1" width="400" height="400"></canvas>
+    </div>
 
-        // Gráfico de Pizza - Uso da Torneira
-        var ctx2 = document.getElementById('graficoUsoTorneira').getContext('2d');
-        var graficoUsoTorneira = new Chart(ctx2, {
-            type: 'pie',
-            data: {
-                labels: ['Sempre', 'Às vezes', 'Raramente', 'Nunca'],
-                datasets: [{
-                    data: [25, 30, 25, 20],
-                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#FF9F40']
-                }]
-            },
-            options: {
-                responsive: true,
-                title: {
-                    display: true,
-                    text: 'Fechar a Torneira ao Escovar os Dentes'
-                }
-            }
-        });
+    <!-- Pergunta 2 -->
+    <div class="chart-container">
+        <h3 class="chart-title">2. Você costuma fechar a torneira enquanto escova os dentes?</h3>
+        <canvas id="chart2" width="400" height="400"></canvas>
+    </div>
 
-        // Gráfico de Pizza - Uso da Mangueira
-        var ctx3 = document.getElementById('graficoUsoMangueira').getContext('2d');
-        var graficoUsoMangueira = new Chart(ctx3, {
-            type: 'pie',
-            data: {
-                labels: ['Sempre uso baldes', 'Uso mangueira, mas com moderação', 'Sempre uso mangueira', 'Nunca uso'],
-                datasets: [{
-                    data: [10, 25, 50, 15],
-                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#FF9F40']
-                }]
-            },
-            options: {
-                responsive: true,
-                title: {
-                    display: true,
-                    text: 'Uso da Mangueira em Tarefas Domésticas'
-                }
-            }
-        });
+    <!-- Pergunta 3 -->
+    <div class="chart-container">
+        <h3 class="chart-title">3. Quantas vezes você verifica vazamentos na sua casa?</h3>
+        <canvas id="chart3" width="400" height="400"></canvas>
+    </div>
 
-        // Gráfico de Pizza - Verificação de Vazamentos
-        var ctx4 = document.getElementById('graficoVerificacao').getContext('2d');
-        var graficoVerificacao = new Chart(ctx4, {
-            type: 'pie',
-            data: {
-                labels: ['Sempre', 'Às vezes', 'Raramente', 'Nunca'],
-                datasets: [{
-                    data: [20, 35, 30, 15],
-                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#FF9F40']
-                }]
-            },
-            options: {
-                responsive: true,
-                title: {
-                    display: true,
-                    text: 'Verificação de Vazamentos'
-                }
-            }
-        });
-    </script>
+    <!-- Pergunta 4 -->
+    <div class="chart-container">
+        <h3 class="chart-title">4. Você utiliza regador ou mangueira para regar as plantas ou usa baldes?</h3>
+        <canvas id="chart4" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 5 -->
+    <div class="chart-container">
+        <h3 class="chart-title">5. Quantas vezes você deixa a torneira aberta enquanto lava a louça?</h3>
+        <canvas id="chart5" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 6 -->
+    <div class="chart-container">
+        <h3 class="chart-title">6. Você usa a máquina de lavar roupa com capacidade total?</h3>
+        <canvas id="chart6" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 7 -->
+    <div class="chart-container">
+        <h3 class="chart-title">7. Você utiliza baldes para lavar o carro em vez de mangueiras?</h3>
+        <canvas id="chart7" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 8 -->
+    <div class="chart-container">
+        <h3 class="chart-title">8. Você costuma verificar a quantidade de água consumida em seu medidor?</h3>
+        <canvas id="chart8" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 9 -->
+    <div class="chart-container">
+        <h3 class="chart-title">9. Você reutiliza a água da chuva?</h3>
+        <canvas id="chart9" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 10 -->
+    <div class="chart-container">
+        <h3 class="chart-title">10. Quantas vezes você utiliza baldes em vez de mangueiras para tarefas domésticas?</h3>
+        <canvas id="chart10" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 11 -->
+    <div class="chart-container">
+        <h3 class="chart-title">11. Você utiliza torneiras com reguladores de fluxo?</h3>
+        <canvas id="chart11" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 12 -->
+    <div class="chart-container">
+        <h3 class="chart-title">12. Você utiliza vassouras em vez de mangueiras para limpar calçadas ou quintais?</h3>
+        <canvas id="chart12" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 13 -->
+    <div class="chart-container">
+        <h3 class="chart-title">13. Você tem um jardim ou horta em casa?</h3>
+        <canvas id="chart13" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 14 -->
+    <div class="chart-container">
+        <h3 class="chart-title">14. Você tem hábitos sustentáveis em relação ao uso de água no jardim?</h3>
+        <canvas id="chart14" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 15 -->
+    <div class="chart-container">
+        <h3 class="chart-title">15. Quantas vezes você diminui o uso de água ao lavar roupas?</h3>
+        <canvas id="chart15" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 16 -->
+    <div class="chart-container">
+        <h3 class="chart-title">16. Você utiliza o mesmo balde de água para diversas tarefas, como limpeza e rega?</h3>
+        <canvas id="chart16" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 17 -->
+    <div class="chart-container">
+        <h3 class="chart-title">17. Você utiliza sistemas de aproveitamento de água da chuva?</h3>
+        <canvas id="chart17" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 18 -->
+    <div class="chart-container">
+        <h3 class="chart-title">18. Quantas vezes você diminui o tempo de irrigação de plantas no jardim?</h3>
+        <canvas id="chart18" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 19 -->
+    <div class="chart-container">
+        <h3 class="chart-title">19. Você utiliza garrafas PET como redutores de vazão em torneiras?</h3>
+        <canvas id="chart19" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 20 -->
+    <div class="chart-container">
+        <h3 class="chart-title">20. Quantas vezes você usa baldes para captar água de chuva?</h3>
+        <canvas id="chart20" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 21 -->
+    <div class="chart-container">
+        <h3 class="chart-title">21. Você sabe como funciona um sistema de cisterna ou aproveitamento de água?</h3>
+        <canvas id="chart21" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 22 -->
+    <div class="chart-container">
+        <h3 class="chart-title">22. Quantas vezes você diminui o tempo de irrigação de plantas em sua casa?</h3>
+        <canvas id="chart22" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 23 -->
+    <div class="chart-container">
+        <h3 class="chart-title">23. Você utiliza sistemas de reaproveitamento de água em outras atividades domésticas?</h3>
+        <canvas id="chart23" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 24 -->
+    <div class="chart-container">
+        <h3 class="chart-title">24. Quantas vezes você verifica o consumo de água em atividades como lavagem de roupas e louça?</h3>
+        <canvas id="chart24" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 25 -->
+    <div class="chart-container">
+        <h3 class="chart-title">25. Você acredita que pequenas mudanças em seus hábitos podem reduzir o consumo de água?</h3>
+        <canvas id="chart25" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 26 -->
+    <div class="chart-container">
+        <h3 class="chart-title">26. Você compartilha práticas sustentáveis com familiares e amigos?</h3>
+        <canvas id="chart26" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 27 -->
+    <div class="chart-container">
+        <h3 class="chart-title">27. Você acredita que o uso racional da água pode ajudar a preservar os recursos hídricos?</h3>
+        <canvas id="chart27" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 28 -->
+    <div class="chart-container">
+        <h3 class="chart-title">28. Quantas vezes você utiliza sistemas de reaproveitamento de água para regar plantas?</h3>
+        <canvas id="chart28" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 29 -->
+    <div class="chart-container">
+        <h3 class="chart-title">29. Você acredita que a conscientização sobre o uso racional da água pode ajudar a reduzir o desperdício?</h3>
+        <canvas id="chart29" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Pergunta 30 -->
+    <div class="chart-container">
+        <h3 class="chart-title">30. Você acredita que suas ações podem influenciar outras pessoas a economizar água?</h3>
+        <canvas id="chart30" width="400" height="400"></canvas>
+    </div>
+
 </div>
 
-</body>
-</html>
+<script>
+    // Dados fictícios fornecidos anteriormente
+    var data1 = {
+        labels: ['Menos de 5 min', '5-10 min', '10-15 min', 'Mais de 15 min'],
+        datasets: [{
+            label: 'Tempo de banho',
+            data: [10, 30, 40, 20],
+            backgroundColor: ['#ff6384', '#36a2eb', '#ffce56', '#4bc0c0']
+        }]
+    };
+
+    var data2 = {
+        labels: ['Sempre', 'Às vezes', 'Raramente', 'Nunca'],
+        datasets: [{
+            label: 'Fechar torneira ao escovar dentes',
+            data: [25, 30, 25, 20],
+            backgroundColor: ['#ff6384', '#36a2eb', '#ffce56', '#4bc0c0']
+        }]
+    };
+
+    var data3 = {
+        labels: ['Sempre', 'Com frequência', 'Raramente', 'Nunca'],
+        datasets: [{
+            label: 'Verificar vazamentos',
+            data: [20, 35, 30, 15],
+            backgroundColor: ['#ff6384', '#36a2eb', '#ffce56', '#4bc0c0']
+        }]
+    };
+
+    var data4 = {
+        labels: ['Sempre uso baldes', 'Uso mangueira com moderação', 'Sempre uso mangueira', 'Nunca rego'],
+        datasets: [{
+            label
