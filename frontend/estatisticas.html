@@ -1,220 +1,129 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estatísticas do Uso Racional de Água</title>
+    <title>Uso Racional da Água - Estatísticas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            display: flex;
-            background-color: #e0f7fa; /* Azul suave como fundo */
-            color: #004d40; /* Cor de texto mais escura para contraste */
+            margin: 20px;
+            background-color: #f4f4f4;
         }
 
-        /* Estilo do menu lateral */
-        .sidebar {
-            width: 200px;
-            background-color: #0288d1; /* Azul intenso */
+        .container {
+            max-width: 800px;
+            margin: auto;
             padding: 20px;
-            color: white;
-            height: 100vh;
-            position: fixed;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .sidebar h2 {
-            font-size: 1.6em;
-            margin-top: 0;
-        }
-
-        .sidebar a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .sidebar a:hover {
-            background-color: #0277bd; /* Azul um tom mais escuro */
-        }
-
-        /* Estilo do conteúdo principal */
-        .content {
-            margin-left: 220px; /* Espaço para o menu lateral */
-            padding: 20px;
-            flex-grow: 1;
-        }
-
-        header {
+        h1 {
             text-align: center;
-            padding: 20px;
-            background-color: #00796b; /* Verde água escuro */
-            color: white;
-            border-radius: 10px;
             margin-bottom: 20px;
         }
 
-        header h1 {
-            font-size: 2.5em;
-        }
-
-        p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            color: #004d40;
-            margin-bottom: 20px;
-        }
-
-        .highlight {
-            background-color: #b2ebf2; /* Azul claro sutil como destaque */
-            padding: 20px;
-            border-left: 5px solid #0288d1;
-            border-radius: 10px;
-            font-size: 1.1em;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Estilo do gráfico */
-        .chart-container {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-
-        footer {
-            background-color: #0288d1;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+        canvas {
+            max-width: 100%;
         }
     </style>
-    <!-- Adicionando Chart.js para gráficos -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-    <!-- Menu será carregado aqui -->
-    <div id="menu-container"></div>
+<div class="container">
+    <h1>Estatísticas do Uso Racional da Água</h1>
+    
+    <!-- Gráfico de Pizza - Tempo de Banho -->
+    <canvas id="graficoTempoBanho" width="400" height="400"></canvas>
+    <canvas id="graficoUsoTorneira" width="400" height="400"></canvas>
+    <canvas id="graficoUsoMangueira" width="400" height="400"></canvas>
+    <canvas id="graficoVerificacao" width="400" height="400"></canvas>
 
-    <div class="content">
-        <header>
-            <h1>Estatísticas do Uso Racional de Água</h1>
-        </header>
-
-        <div class="highlight">
-            <p>💧 Aqui estão as estatísticas simuladas de como os alunos responderam às questões sobre uso racional de água. Vamos ver o que eles disseram e como podemos tomar ações para economizar!</p>
-        </div>
-
-        <!-- Gráficos simulados -->
-        <div class="chart-container">
-            <h2>Uso Racional de Água - Porcentagem de Respostas</h2>
-            <canvas id="graph1"></canvas>
-        </div>
-
-        <div class="chart-container">
-            <h2>Comportamento no Banho - Frequência</h2>
-            <canvas id="graph2"></canvas>
-        </div>
-
-        <div class="chart-container">
-            <h2>Hábitos de Reutilização de Água</h2>
-            <canvas id="graph3"></canvas>
-        </div>
-
-    </div>
-
-    <footer>
-        <p>&copy; 2024 Uso Racional de Água. Todos os direitos reservados.</p>
-    </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Dados fictícios para os gráficos
-        const data1 = {
-            labels: ['Sim', 'Não'],
-            datasets: [{
-                label: 'Pergunta 1: Economiza Água?',
-                data: [65, 35], // Respostas de 80 alunos simuladas
-                backgroundColor: ['#4caf50', '#f44336'],
-                hoverBackgroundColor: ['#45a049', '#e53935']
-            }]
-        };
-
-        const data2 = {
-            labels: ['Até 5 min', 'Entre 5-10 min', 'Mais de 10 min'],
-            datasets: [{
-                label: 'Pergunta 2: Tempo de banho',
-                data: [40, 30, 30], // Respostas de 80 alunos simuladas
-                backgroundColor: ['#2196f3', '#ffeb3b', '#f44336'],
-                hoverBackgroundColor: ['#1976d2', '#fbc02d', '#e53935']
-            }]
-        };
-
-        const data3 = {
-            labels: ['Sim', 'Não'],
-            datasets: [{
-                label: 'Pergunta 3: Reutiliza água?',
-                data: [55, 45], // Respostas de 80 alunos simuladas
-                backgroundColor: ['#4caf50', '#f44336'],
-                hoverBackgroundColor: ['#45a049', '#e53935']
-            }]
-        };
-
-        // Configurações e criação dos gráficos
-        const config1 = {
+        // Gráfico de Pizza - Tempo de Banho
+        var ctx1 = document.getElementById('graficoTempoBanho').getContext('2d');
+        var graficoTempoBanho = new Chart(ctx1, {
             type: 'pie',
-            data: data1,
+            data: {
+                labels: ['< 5 min', '5 a 10 min', '10 a 15 min', '> 15 min'],
+                datasets: [{
+                    data: [10, 30, 40, 20],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#FF9F40']
+                }]
+            },
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    }
+                title: {
+                    display: true,
+                    text: 'Tempo de Banho (em porcentagem)'
                 }
             }
-        };
+        });
 
-        const config2 = {
+        // Gráfico de Pizza - Uso da Torneira
+        var ctx2 = document.getElementById('graficoUsoTorneira').getContext('2d');
+        var graficoUsoTorneira = new Chart(ctx2, {
             type: 'pie',
-            data: data2,
+            data: {
+                labels: ['Sempre', 'Às vezes', 'Raramente', 'Nunca'],
+                datasets: [{
+                    data: [25, 30, 25, 20],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#FF9F40']
+                }]
+            },
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    }
+                title: {
+                    display: true,
+                    text: 'Fechar a Torneira ao Escovar os Dentes'
                 }
             }
-        };
+        });
 
-        const config3 = {
+        // Gráfico de Pizza - Uso da Mangueira
+        var ctx3 = document.getElementById('graficoUsoMangueira').getContext('2d');
+        var graficoUsoMangueira = new Chart(ctx3, {
             type: 'pie',
-            data: data3,
+            data: {
+                labels: ['Sempre uso baldes', 'Uso mangueira, mas com moderação', 'Sempre uso mangueira', 'Nunca uso'],
+                datasets: [{
+                    data: [10, 25, 50, 15],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#FF9F40']
+                }]
+            },
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    }
+                title: {
+                    display: true,
+                    text: 'Uso da Mangueira em Tarefas Domésticas'
                 }
             }
-        };
+        });
 
-        // Renderizando os gráficos
-        new Chart(document.getElementById('graph1'), config1);
-        new Chart(document.getElementById('graph2'), config2);
-        new Chart(document.getElementById('graph3'), config3);
+        // Gráfico de Pizza - Verificação de Vazamentos
+        var ctx4 = document.getElementById('graficoVerificacao').getContext('2d');
+        var graficoVerificacao = new Chart(ctx4, {
+            type: 'pie',
+            data: {
+                labels: ['Sempre', 'Às vezes', 'Raramente', 'Nunca'],
+                datasets: [{
+                    data: [20, 35, 30, 15],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#FF9F40']
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Verificação de Vazamentos'
+                }
+            }
+        });
     </script>
+</div>
+
 </body>
 </html>
