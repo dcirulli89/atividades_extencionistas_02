@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mural de Conscientização - Uso Racional da Água</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        header {
+            text-align: center;
+        }
+        .mural {
+            margin-top: 20px;
+        }
+        .form-signature {
+            margin-top: 20px;
+        }
+        .signature-list {
+            margin-top: 20px;
+        }
+        .signature-list p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Conscientização do Uso Racional da Água</h1>
+        <p>Assine o mural e faça parte da mudança!</p>
+    </header>
+
+    <div class="form-signature">
+        <form id="signatureForm">
+            <label for="name">Digite seu nome:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <button type="submit">Assinar</button>
+        </form>
+    </div>
+
+    <div class="mural">
+        <h2>Mural de Assinaturas</h2>
+        <div id="signatureList" class="signature-list">
+            <!-- As assinaturas aparecerão aqui -->
+        </div>
+    </div>
+
+    <script>
+        // Função para adicionar uma nova assinatura ao mural
+        document.getElementById('signatureForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio padrão do formulário
+
+            var name = document.getElementById('name').value;
+            if (name) {
+                var signatureList = document.getElementById('signatureList');
+                var newSignature = document.createElement('p');
+                newSignature.textContent = name; // Adiciona o nome ao mural
+                signatureList.appendChild(newSignature); // Adiciona ao container de assinaturas
+                document.getElementById('name').value = ''; // Limpa o campo após a assinatura
+            }
+        });
+    </script>
+
+</body>
+</html>
