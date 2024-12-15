@@ -203,4 +203,71 @@
         <canvas id="chart28" width="400" height="400"></canvas>
     </div>
 
-    <!--
+    <!-- Gráficos falsos com valores aleatórios -->
+    <script>
+        const ctx1 = document.getElementById('chart1').getContext('2d');
+        const chart1 = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Até 5 min', '6-10 min', '11-15 min', 'Mais de 15 min'],
+                datasets: [{
+                    label: 'Tempo de Banho',
+                    data: [10, 15, 5, 20],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+                }]
+            },
+            options: {}
+        });
+
+        const ctx2 = document.getElementById('chart2').getContext('2d');
+        const chart2 = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Sim', 'Não'],
+                datasets: [{
+                    label: 'Torneira Fechada ao Escovar os Dentes',
+                    data: [25, 10],
+                    backgroundColor: ['#FF6384', '#36A2EB']
+                }]
+            },
+            options: {}
+        });
+
+        const ctx3 = document.getElementById('chart3').getContext('2d');
+        const chart3 = new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: ['Diariamente', 'Semanalmente', 'Mensalmente', 'Nunca'],
+                datasets: [{
+                    label: 'Verificação de Vazamentos',
+                    data: [12, 18, 6, 8],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+                }]
+            },
+            options: {}
+        });
+
+        const ctx4 = document.getElementById('chart4').getContext('2d');
+        const chart4 = new Chart(ctx4, {
+            type: 'bar',
+            data: {
+                labels: ['Regador', 'Mangueira'],
+                datasets: [{
+                    label: 'Regar Plantas',
+                    data: [20, 15],
+                    backgroundColor: ['#FF6384', '#36A2EB']
+                }]
+            },
+            options: {}
+        });
+
+        const ctx5 = document.getElementById('chart5').getContext('2d');
+        const chart5 = new Chart(ctx5, {
+            type: 'bar',
+            data: {
+                labels: ['Sempre', 'Às vezes', 'Quase nunca', 'Nunca'],
+                datasets: [{
+                    label: 'Torneira Aberta ao Lavar Louça',
+                    data: [10, 15, 10, 5],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+               
