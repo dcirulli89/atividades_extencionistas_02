@@ -1,245 +1,95 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz de Uso Racional de Água</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            margin: 0;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: #2196f3;
-            color: white;
-        }
-
-        .question {
-            margin: 20px 0;
-        }
-
-        .options {
-            margin: 10px 0;
-        }
-
-        .option {
-            display: block;
-            margin: 5px 0;
-        }
-
-        button {
-            padding: 10px 15px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .result {
-            margin-top: 20px;
-            font-size: 1.2em;
-            font-weight: bold;
-            text-align: center;
-        }
-    </style>
+    <title>Pesquisa: Uso Racional da Água</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <header>
-        <h1>Quiz sobre Uso Racional de Água</h1>
+        <h1>Pesquisa: Uso Racional da Água</h1>
+        <p>Ajude-nos a entender como você e sua família estão lidando com o consumo consciente de água.</p>
     </header>
 
-    <div id="quiz"></div>
-    <button id="submit">Enviar Respostas</button>
-    <div id="result" class="result"></div>
+    <main>
+        <form action="submit.php" method="POST">
+            <fieldset>
+                <legend>Informações Pessoais</legend>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
 
-    <script>
-        // Array de perguntas sobre água
-        const questions = [
-            {
-                question: "Qual é o maior consumidor de água no Brasil?",
-                options: [
-                    "Agronegócio",
-                    "Indústria",
-                    "Doméstico"
-                ],
-                answer: "Agronegócio"
-            },
-            {
-                question: "Quanto de água é necessário para produzir 1 kg de carne bovina?",
-                options: [
-                    "15.000 litros",
-                    "50.000 litros",
-                    "100.000 litros"
-                ],
-                answer: "15.000 litros"
-            },
-            {
-                question: "Qual é a principal fonte de água potável no Brasil?",
-                options: [
-                    "Águas subterrâneas",
-                    "Rios e lagos",
-                    "Águas de chuva"
-                ],
-                answer: "Rios e lagos"
-            },
-            {
-                question: "Como a utilização de torneiras com arejadores pode ajudar na economia de água?",
-                options: [
-                    "Reduzindo o fluxo de água",
-                    "Aumentando o fluxo de água",
-                    "Desviando a água para outra área"
-                ],
-                answer: "Reduzindo o fluxo de água"
-            },
-            {
-                question: "Qual é o impacto do desperdício de água no meio ambiente?",
-                options: [
-                    "Aumento da biodiversidade",
-                    "Desertificação e escassez de recursos",
-                    "Melhora na qualidade do ar"
-                ],
-                answer: "Desertificação e escassez de recursos"
-            },
-            {
-                question: "A água que consumimos na nossa casa é proveniente principalmente de?",
-                options: [
-                    "Águas de chuva",
-                    "Estacionamentos de águas pluviais",
-                    "Fontes naturais ou estações de tratamento"
-                ],
-                answer: "Fontes naturais ou estações de tratamento"
-            },
-            {
-                question: "Qual dessas ações pode ajudar a economizar água no dia a dia?",
-                options: [
-                    "Deixar a torneira aberta enquanto escova os dentes",
-                    "Tomar banhos mais curtos",
-                    "Lavar carros com mangueira"
-                ],
-                answer: "Tomar banhos mais curtos"
-            },
-            {
-                question: "Quanto tempo em média uma torneira aberta pode desperdiçar de água por minuto?",
-                options: [
-                    "5 litros",
-                    "10 litros",
-                    "20 litros"
-                ],
-                answer: "10 litros"
-            },
-            {
-                question: "Qual é a porcentagem de água doce disponível no planeta?",
-                options: [
-                    "0,3%",
-                    "3%",
-                    "30%"
-                ],
-                answer: "0,3%"
-            },
-            {
-                question: "Qual desses processos pode ser utilizado para reuso de água?",
-                options: [
-                    "Desalinação",
-                    "Filtragem",
-                    "Reaproveitamento de águas pluviais"
-                ],
-                answer: "Reaproveitamento de águas pluviais"
-            },
-            {
-                question: "Qual é o principal problema enfrentado pela água no Brasil?",
-                options: [
-                    "Saneamento básico",
-                    "Poluição e desperdício",
-                    "Falta de estações de tratamento"
-                ],
-                answer: "Poluição e desperdício"
-            },
-            {
-                question: "O que é a 'pegada hídrica'?",
-                options: [
-                    "O total de água utilizada na produção de um produto",
-                    "A quantidade de água consumida em casa",
-                    "O volume de água consumido por um rio"
-                ],
-                answer: "O total de água utilizada na produção de um produto"
-            },
-            {
-                question: "Em média, quanto tempo leva para a água de um rio ser filtrada e limpa em uma estação de tratamento?",
-                options: [
-                    "Alguns dias",
-                    "Algumas semanas",
-                    "Alguns meses"
-                ],
-                answer: "Alguns dias"
-            },
-            {
-                question: "Quais tipos de produtos consomem grandes quantidades de água em sua produção?",
-                options: [
-                    "Tecnologia e cosméticos",
-                    "Roupas e alimentos",
-                    "Alimentos e eletrônicos"
-                ],
-                answer: "Roupas e alimentos"
-            },
-            {
-                question: "Qual é a água utilizada para consumo humano?",
-                options: [
-                    "Água potável",
-                    "Água de reuso",
-                    "Água de irrigação"
-                ],
-                answer: "Água potável"
-            },
-            // Continue com mais perguntas de acordo com sua necessidade...
-        ];
+                <label for="idade">Idade:</label>
+                <input type="number" id="idade" name="idade" required min="13" max="19">
 
-        // Função para gerar o quiz
-        function generateQuiz() {
-            const quizContainer = document.getElementById('quiz');
-            questions.forEach((q, index) => {
-                const questionElement = document.createElement('div');
-                questionElement.classList.add('question');
-                questionElement.innerHTML = `<h3>${q.question}</h3>`;
-                
-                q.options.forEach(option => {
-                    const optionElement = document.createElement('label');
-                    optionElement.classList.add('option');
-                    optionElement.innerHTML = `
-                        <input type="radio" name="question${index}" value="${option}">
-                        ${option}
-                    `;
-                    questionElement.appendChild(optionElement);
-                });
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" required>
 
-                quizContainer.appendChild(questionElement);
-            });
-        }
+                <label for="ano">Ano do Ensino Médio:</label>
+                <input type="number" id="ano" name="ano" required min="1" max="3">
+            </fieldset>
 
-        // Função para enviar respostas e calcular a pontuação
-        document.getElementById('submit').addEventListener('click', () => {
-            let score = 0;
-            questions.forEach((q, index) => {
-                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
-                if (selectedOption && selectedOption.value === q.answer) {
-                    score++;
-                }
-            });
-            document.getElementById('result').innerHTML = `Você acertou ${score} de ${questions.length} perguntas!`;
-        });
+            <fieldset>
+                <legend>Comportamento em Relação ao Uso de Água</legend>
+                <label for="banho">Quanto tempo você costuma tomar banho diariamente (em minutos)?</label>
+                <input type="number" id="banho" name="banho" required min="0">
 
-        // Gera o quiz ao carregar a página
-        window.onload = generateQuiz;
-    </script>
+                <label for="escova_dentes">Você costuma fechar a torneira enquanto escova os dentes?</label>
+                <select id="escova_dentes" name="escova_dentes" required>
+                    <option value="sim">Sim</option>
+                    <option value="nao">Não</option>
+                </select>
+
+                <label for="lavagem_louca">Quantas vezes você lava a louça por dia?</label>
+                <input type="number" id="lavagem_louca" name="lavagem_louca" required min="0">
+
+                <label for="mangueira_baldes">Você usa a mangueira ou balde para lavar a calçada/jardim?</label>
+                <select id="mangueira_baldes" name="mangueira_baldes" required>
+                    <option value="mangueira">Mangueira</option>
+                    <option value="balde">Balde</option>
+                    <option value="nenhum">Nenhum dos dois</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Conscientização e Informações</legend>
+                <label for="campanhas">Você já participou de atividades ou campanhas que promovem o uso racional da água?</label>
+                <select id="campanhas" name="campanhas" required>
+                    <option value="sim">Sim</option>
+                    <option value="nao">Não</option>
+                </select>
+
+                <label for="conhecimento">Você acredita que há informações suficientes nas escolas sobre o uso consciente da água?</label>
+                <select id="conhecimento" name="conhecimento" required>
+                    <option value="sim">Sim</option>
+                    <option value="nao">Não</option>
+                </select>
+
+                <label for="informacao">Como você busca informações sobre o consumo de água?</label>
+                <input type="text" id="informacao" name="informacao" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Opiniões e Mudanças</legend>
+                <label for="rotina">Você acredita que sua rotina diária pode ser mais eficiente no uso da água? Como?</label>
+                <textarea id="rotina" name="rotina" required></textarea>
+
+                <label for="diferenca">Você acredita que pequenas mudanças no dia a dia podem fazer uma grande diferença no consumo de água?</label>
+                <select id="diferenca" name="diferenca" required>
+                    <option value="sim">Sim</option>
+                    <option value="nao">Não</option>
+                </select>
+
+                <label for="desafios">Quais desafios você encontra ao tentar economizar água em casa?</label>
+                <textarea id="desafios" name="desafios" required></textarea>
+            </fieldset>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Projeto de Uso Racional da Água</p>
+    </footer>
 </body>
 </html>
