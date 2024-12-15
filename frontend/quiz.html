@@ -1,95 +1,97 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesquisa: Uso Racional da Água</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Pesquisa: Uso Racional Doméstico da Água</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .options {
+            list-style: none;
+            padding-left: 0;
+        }
+        .options li {
+            margin-bottom: 10px;
+        }
+        .options label {
+            display: block;
+            margin-left: 5px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Pesquisa: Uso Racional da Água</h1>
-        <p>Ajude-nos a entender como você e sua família estão lidando com o consumo consciente de água.</p>
-    </header>
 
-    <main>
-        <form action="submit.php" method="POST">
-            <fieldset>
-                <legend>Informações Pessoais</legend>
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
+    <h1>Pesquisa: Uso Racional Doméstico da Água</h1>
 
-                <label for="idade">Idade:</label>
-                <input type="number" id="idade" name="idade" required min="13" max="19">
+    <p>Instruções: Responda às perguntas abaixo com base em suas práticas e comportamentos em relação ao uso racional da água em sua casa.</p>
 
-                <label for="cidade">Cidade:</label>
-                <input type="text" id="cidade" name="cidade" required>
+    <form action="process_form.php" method="post">
 
-                <label for="ano">Ano do Ensino Médio:</label>
-                <input type="number" id="ano" name="ano" required min="1" max="3">
-            </fieldset>
+        <div class="question">
+            <p>1. Quanto tempo você costuma tomar banho?</p>
+            <ul class="options">
+                <li><input type="radio" name="q1" value="a"> Menos de 5 minutos</li>
+                <li><input type="radio" name="q1" value="b"> 5 a 10 minutos</li>
+                <li><input type="radio" name="q1" value="c"> 10 a 15 minutos</li>
+                <li><input type="radio" name="q1" value="d"> Mais de 15 minutos</li>
+            </ul>
+        </div>
 
-            <fieldset>
-                <legend>Comportamento em Relação ao Uso de Água</legend>
-                <label for="banho">Quanto tempo você costuma tomar banho diariamente (em minutos)?</label>
-                <input type="number" id="banho" name="banho" required min="0">
+        <div class="question">
+            <p>2. Você costuma fechar a torneira enquanto escova os dentes?</p>
+            <ul class="options">
+                <li><input type="radio" name="q2" value="a"> Sempre</li>
+                <li><input type="radio" name="q2" value="b"> Às vezes</li>
+                <li><input type="radio" name="q2" value="c"> Raramente</li>
+                <li><input type="radio" name="q2" value="d"> Nunca</li>
+            </ul>
+        </div>
 
-                <label for="escova_dentes">Você costuma fechar a torneira enquanto escova os dentes?</label>
-                <select id="escova_dentes" name="escova_dentes" required>
-                    <option value="sim">Sim</option>
-                    <option value="nao">Não</option>
-                </select>
+        <div class="question">
+            <p>3. Quantas vezes você verifica vazamentos na sua casa?</p>
+            <ul class="options">
+                <li><input type="radio" name="q3" value="a"> Sempre</li>
+                <li><input type="radio" name="q3" value="b"> Com frequência</li>
+                <li><input type="radio" name="q3" value="c"> Raramente</li>
+                <li><input type="radio" name="q3" value="d"> Nunca</li>
+            </ul>
+        </div>
 
-                <label for="lavagem_louca">Quantas vezes você lava a louça por dia?</label>
-                <input type="number" id="lavagem_louca" name="lavagem_louca" required min="0">
+        <div class="question">
+            <p>4. Você utiliza regador ou mangueira para regar as plantas ou usa baldes?</p>
+            <ul class="options">
+                <li><input type="radio" name="q4" value="a"> Sempre uso baldes</li>
+                <li><input type="radio" name="q4" value="b"> Uso mangueira, mas com moderação</li>
+                <li><input type="radio" name="q4" value="c"> Sempre uso mangueira</li>
+                <li><input type="radio" name="q4" value="d"> Nunca rego as plantas</li>
+            </ul>
+        </div>
 
-                <label for="mangueira_baldes">Você usa a mangueira ou balde para lavar a calçada/jardim?</label>
-                <select id="mangueira_baldes" name="mangueira_baldes" required>
-                    <option value="mangueira">Mangueira</option>
-                    <option value="balde">Balde</option>
-                    <option value="nenhum">Nenhum dos dois</option>
-                </select>
-            </fieldset>
+        <!-- Adicione as demais perguntas aqui... -->
 
-            <fieldset>
-                <legend>Conscientização e Informações</legend>
-                <label for="campanhas">Você já participou de atividades ou campanhas que promovem o uso racional da água?</label>
-                <select id="campanhas" name="campanhas" required>
-                    <option value="sim">Sim</option>
-                    <option value="nao">Não</option>
-                </select>
+        <div class="question">
+            <p>30. Você acredita que suas ações podem influenciar outras pessoas a economizar água?</p>
+            <ul class="options">
+                <li><input type="radio" name="q30" value="a"> Sim, sempre</li>
+                <li><input type="radio" name="q30" value="b"> Às vezes</li>
+                <li><input type="radio" name="q30" value="c"> Raramente</li>
+                <li><input type="radio" name="q30" value="d"> Nunca</li>
+            </ul>
+        </div>
 
-                <label for="conhecimento">Você acredita que há informações suficientes nas escolas sobre o uso consciente da água?</label>
-                <select id="conhecimento" name="conhecimento" required>
-                    <option value="sim">Sim</option>
-                    <option value="nao">Não</option>
-                </select>
+        <input type="submit" value="Enviar Respostas">
 
-                <label for="informacao">Como você busca informações sobre o consumo de água?</label>
-                <input type="text" id="informacao" name="informacao" required>
-            </fieldset>
+    </form>
 
-            <fieldset>
-                <legend>Opiniões e Mudanças</legend>
-                <label for="rotina">Você acredita que sua rotina diária pode ser mais eficiente no uso da água? Como?</label>
-                <textarea id="rotina" name="rotina" required></textarea>
-
-                <label for="diferenca">Você acredita que pequenas mudanças no dia a dia podem fazer uma grande diferença no consumo de água?</label>
-                <select id="diferenca" name="diferenca" required>
-                    <option value="sim">Sim</option>
-                    <option value="nao">Não</option>
-                </select>
-
-                <label for="desafios">Quais desafios você encontra ao tentar economizar água em casa?</label>
-                <textarea id="desafios" name="desafios" required></textarea>
-            </fieldset>
-
-            <button type="submit">Enviar</button>
-        </form>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 - Projeto de Uso Racional da Água</p>
-    </footer>
 </body>
 </html>
