@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uso Racional de Água</title>
+    <title>Uso Racional de Água - Questionário</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -87,6 +87,41 @@
             width: 100%;
             bottom: 0;
         }
+
+        /* Estilo das perguntas e formulário */
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #0288d1;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #0288d1;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0277bd;
+        }
     </style>
 </head>
 <body>
@@ -96,11 +131,169 @@
 
     <div class="content">
         <header>
-            <h1>Bem-vindo ao site sobre Uso Racional de Água</h1>
+            <h1>Questionário sobre Uso Racional de Água</h1>
         </header>
 
         <div class="highlight">
-            <p>💧 Descubra dicas e informações para economizar água e preservar este recurso precioso. Cada pequena ação conta para um futuro mais sustentável!</p>
+            <p>💧 Ajude a preservar a água respondendo estas perguntas e contribua para a conscientização sobre o uso racional da água!</p>
+        </div>
+
+        <div class="form-container">
+            <form id="questionario">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="idade">Idade:</label>
+                    <input type="number" id="idade" name="idade" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="anoEnsino">Em qual ano do ensino médio você está?</label>
+                    <input type="text" id="anoEnsino" name="anoEnsino" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="familia">Qual é o tamanho da sua família?</label>
+                    <input type="number" id="familia" name="familia" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Quanto tempo você costuma tomar banho diariamente?</label>
+                    <input type="number" name="tempoBanho" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Você costuma fechar a torneira enquanto escova os dentes? Por quê?</label>
+                    <textarea name="torneiraDentes" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Quantas vezes você lava a louça por dia?</label>
+                    <input type="number" name="lavarLouça" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Como você se preocupa em economizar água em sua casa?</label>
+                    <textarea name="economizarAgua" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Você já reduziu o uso de água em alguma atividade diária? Qual?</label>
+                    <textarea name="reduzirUsoAgua" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Quais medidas você adota para evitar o desperdício de água na cozinha?</label>
+                    <textarea name="medidasCozinha" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Quantas vezes você utiliza a máquina de lavar roupas por semana?</label>
+                    <input type="number" name="maquinaRoupas" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Você usa a mangueira ou balde para lavar a calçada/jardim? Qual método é mais comum em sua casa?</label>
+                    <textarea name="lavarCalçada" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Você sabe o que é o "vazamento de água"? Já teve ou conhece alguém com esse problema?</label>
+                    <textarea name="vazamentoAgua" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Quais aparelhos domésticos você utiliza que consomem mais água?</label>
+                    <textarea name="aparelhosAgua" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Você já participou de atividades ou campanhas que promovem o uso racional da água? Como?</label>
+                    <textarea name="atividadesAgua" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Você considera que sua família é consciente sobre o uso racional da água?</label>
+                    <textarea name="conscienciaFamilia" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Você acha que há informações suficientes nas escolas sobre o uso consciente da água?</label>
+                    <textarea name="informacoesEscolas" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Como você busca informações sobre o consumo de água?</label>
+                    <textarea name="informacoesBusca" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Quais ações de economia de água você acha mais importantes?</label>
+                    <textarea name="acoesEconomiaAgua" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Você conhece os principais motivos do desperdício de água em casa? Quais?</label>
+                    <textarea name="motivosDesperdicio" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Quais plataformas você utiliza para aprender mais sobre sustentabilidade e uso racional da água?</label>
+                    <textarea name="plataformasAprendizagem" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Você acredita que a sua rotina diária pode ser mais eficiente no uso da água? Como?</label>
+                    <textarea name="rotinaEficiência" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Você acredita que pequenas mudanças no dia a dia podem fazer uma grande diferença no consumo de água?</label>
+                    <textarea name="mudancasDiaDia" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Quais desafios você encontra ao tentar economizar água em casa?</label>
+                    <textarea name="desafiosEconomizarAgua" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Você acredita que campanhas de conscientização sobre o uso racional da água são eficazes?</label>
+                    <textarea name="eficaciaCampanhas" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Quais métodos você acredita que seriam mais eficazes para reduzir o consumo de água em sua casa?</label>
+                    <textarea name="metodosEficazes" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Você costuma substituir produtos e aparelhos que consomem muita água por alternativas mais eficientes?</label>
+                    <textarea name="substituirProdutos" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Como você avalia a importância de medidas sustentáveis em sua rotina?</label>
+                    <textarea name="importanciaSustentabilidade" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>O que mais você gostaria de saber sobre o uso racional da água?</label>
+                    <textarea name="perguntasExtras" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">Enviar</button>
+                </div>
+            </form>
         </div>
     </div>
 
