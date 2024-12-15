@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estatísticas de Uso Racional de Água</title>
+    <title>Estatísticas do Uso Racional de Água</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -78,6 +78,15 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
+        /* Estilo do gráfico */
+        .chart-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
         footer {
             background-color: #0288d1;
             color: white;
@@ -88,6 +97,8 @@
             bottom: 0;
         }
     </style>
+    <!-- Adicionando Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -96,24 +107,29 @@
 
     <div class="content">
         <header>
-            <h1>Estatísticas de Uso Racional de Água</h1>
+            <h1>Estatísticas do Uso Racional de Água</h1>
         </header>
 
         <div class="highlight">
-            <p>💧 Confira algumas estatísticas baseadas nas respostas de 80 alunos. Essas informações fictícias ajudam a entender o comportamento e as atitudes em relação ao uso consciente da água.</p>
+            <p>💧 Aqui estão as estatísticas simuladas de como os alunos responderam às questões sobre uso racional de água. Vamos ver o que eles disseram e como podemos tomar ações para economizar!</p>
         </div>
 
-        <h2>Resultados das Respostas dos Alunos</h2>
+        <!-- Gráficos simulados -->
+        <div class="chart-container">
+            <h2>Uso Racional de Água - Porcentagem de Respostas</h2>
+            <canvas id="graph1"></canvas>
+        </div>
 
-        <ul>
-            <li>80% dos alunos afirmaram que costumam fechar a torneira enquanto escovam os dentes.</li>
-            <li>75% disseram evitar banhos demorados como uma forma de economizar água.</li>
-            <li>70% dos alunos costumam verificar vazamentos em suas casas.</li>
-            <li>65% relataram reduzir o uso de água em atividades diárias como lavar roupas e louças.</li>
-            <li>50% afirmaram ter instalado dispositivos economizadores de água em seus chuveiros ou torneiras.</li>
-        </ul>
+        <div class="chart-container">
+            <h2>Comportamento no Banho - Frequência</h2>
+            <canvas id="graph2"></canvas>
+        </div>
 
-        <p>Com essas ações, podemos ver um compromisso significativo com o uso racional da água!</p>
+        <div class="chart-container">
+            <h2>Hábitos de Reutilização de Água</h2>
+            <canvas id="graph3"></canvas>
+        </div>
+
     </div>
 
     <footer>
@@ -121,12 +137,84 @@
     </footer>
 
     <script>
-        // Carrega o menu lateral
-        fetch('menu.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('menu-container').innerHTML = data;
-            });
+        // Dados fictícios para os gráficos
+        const data1 = {
+            labels: ['Sim', 'Não'],
+            datasets: [{
+                label: 'Pergunta 1: Economiza Água?',
+                data: [65, 35], // Respostas de 80 alunos simuladas
+                backgroundColor: ['#4caf50', '#f44336'],
+                hoverBackgroundColor: ['#45a049', '#e53935']
+            }]
+        };
+
+        const data2 = {
+            labels: ['Até 5 min', 'Entre 5-10 min', 'Mais de 10 min'],
+            datasets: [{
+                label: 'Pergunta 2: Tempo de banho',
+                data: [40, 30, 30], // Respostas de 80 alunos simuladas
+                backgroundColor: ['#2196f3', '#ffeb3b', '#f44336'],
+                hoverBackgroundColor: ['#1976d2', '#fbc02d', '#e53935']
+            }]
+        };
+
+        const data3 = {
+            labels: ['Sim', 'Não'],
+            datasets: [{
+                label: 'Pergunta 3: Reutiliza água?',
+                data: [55, 45], // Respostas de 80 alunos simuladas
+                backgroundColor: ['#4caf50', '#f44336'],
+                hoverBackgroundColor: ['#45a049', '#e53935']
+            }]
+        };
+
+        // Configurações e criação dos gráficos
+        const config1 = {
+            type: 'pie',
+            data: data1,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        };
+
+        const config2 = {
+            type: 'pie',
+            data: data2,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        };
+
+        const config3 = {
+            type: 'pie',
+            data: data3,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        };
+
+        // Renderizando os gráficos
+        new Chart(document.getElementById('graph1'), config1);
+        new Chart(document.getElementById('graph2'), config2);
+        new Chart(document.getElementById('graph3'), config3);
     </script>
 </body>
 </html>
